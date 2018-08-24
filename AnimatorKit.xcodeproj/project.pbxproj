@@ -10,6 +10,10 @@
 		12C998F4212FCAED00F1288B /* AnimatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C998EA212FCAED00F1288B /* AnimatorKit.framework */; };
 		12C998F9212FCAED00F1288B /* AnimatorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C998F8212FCAED00F1288B /* AnimatorKitTests.swift */; };
 		12C998FB212FCAED00F1288B /* AnimatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C998ED212FCAED00F1288B /* AnimatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		12C99908212FCAF300F1288B /* LinearAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99904212FCAF300F1288B /* LinearAnimator.swift */; };
+		12C99909212FCAF300F1288B /* Range+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99905212FCAF300F1288B /* Range+Animation.swift */; };
+		12C9990A212FCAF300F1288B /* Anmator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99906212FCAF300F1288B /* Anmator.swift */; };
+		12C9990B212FCAF300F1288B /* DurationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99907212FCAF300F1288B /* DurationAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12529978212FCB7A001C94B3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		12C998EA212FCAED00F1288B /* AnimatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnimatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C998ED212FCAED00F1288B /* AnimatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatorKit.h; sourceTree = "<group>"; };
 		12C998EE212FCAED00F1288B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12C998F3212FCAED00F1288B /* AnimatorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimatorKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C998F8212FCAED00F1288B /* AnimatorKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorKitTests.swift; sourceTree = "<group>"; };
 		12C998FA212FCAED00F1288B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12C99904212FCAF300F1288B /* LinearAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearAnimator.swift; sourceTree = "<group>"; };
+		12C99905212FCAF300F1288B /* Range+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+Animation.swift"; sourceTree = "<group>"; };
+		12C99906212FCAF300F1288B /* Anmator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anmator.swift; sourceTree = "<group>"; };
+		12C99907212FCAF300F1288B /* DurationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +62,7 @@
 		12C998E0212FCAED00F1288B = {
 			isa = PBXGroup;
 			children = (
+				12529978212FCB7A001C94B3 /* README.md */,
 				12C998EC212FCAED00F1288B /* AnimatorKit */,
 				12C998F7212FCAED00F1288B /* AnimatorKitTests */,
 				12C998EB212FCAED00F1288B /* Products */,
@@ -71,6 +81,10 @@
 		12C998EC212FCAED00F1288B /* AnimatorKit */ = {
 			isa = PBXGroup;
 			children = (
+				12C99906212FCAF300F1288B /* Anmator.swift */,
+				12C99907212FCAF300F1288B /* DurationAnimator.swift */,
+				12C99904212FCAF300F1288B /* LinearAnimator.swift */,
+				12C99905212FCAF300F1288B /* Range+Animation.swift */,
 				12C998ED212FCAED00F1288B /* AnimatorKit.h */,
 				12C998EE212FCAED00F1288B /* Info.plist */,
 			);
@@ -148,6 +162,7 @@
 				TargetAttributes = {
 					12C998E9212FCAED00F1288B = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					12C998F2212FCAED00F1288B = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C9990A212FCAF300F1288B /* Anmator.swift in Sources */,
+				12C99909212FCAF300F1288B /* Range+Animation.swift in Sources */,
+				12C9990B212FCAF300F1288B /* DurationAnimator.swift in Sources */,
+				12C99908212FCAF300F1288B /* LinearAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +360,7 @@
 		12C998FF212FCAED00F1288B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.kaizen.AnimatorKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +387,7 @@
 		12C99900212FCAED00F1288B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +413,7 @@
 		12C99902212FCAED00F1288B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28ZY5273WP;
 				INFOPLIST_FILE = AnimatorKitTests/Info.plist;
@@ -409,6 +432,7 @@
 		12C99903212FCAED00F1288B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28ZY5273WP;
 				INFOPLIST_FILE = AnimatorKitTests/Info.plist;
