@@ -41,9 +41,10 @@ public class DurationAnimator: Animator {
 		return timingFunction.value(atTime: value)
 	}
 	
-	init(duration: TimeInterval, timingFunction: CAMediaTimingFunction? = nil) {
+	public init(duration: TimeInterval, timingFunction: CAMediaTimingFunction? = nil) {
 		self.duration = duration
 		self.timingFunction = timingFunction
+		super.init()
 	}
 	
 	override public func tick() {

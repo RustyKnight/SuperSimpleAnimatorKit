@@ -15,12 +15,14 @@ import UIKit
 // good for things like timers or animation cycles which don't know how
 // long they need to keep running for
 public protocol LinearAnimatorDelegate {
-	func didTick(animation: LinearAnimation)
+	func didTick(animation: LinearAnimator)
 }
 
-public class LinearAnimation: Animator {
+public class LinearAnimator: Animator {
 	
 	public var delegate: LinearAnimatorDelegate?
+	
+	public override init() {}
 	
 	// Extension point
 	override public func tick() {

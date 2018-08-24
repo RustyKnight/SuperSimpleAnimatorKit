@@ -14,6 +14,8 @@ public class Animator {
 	
 	internal var displayLink: CADisplayLink?
 	
+	public init() {}
+	
 	public var isRunning: Bool {
 		return displayLink != nil
 	}
