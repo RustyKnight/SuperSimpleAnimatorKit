@@ -45,6 +45,8 @@ public class DurationAnimator: Animator {
 	
 	internal var ticker: DurationTicker?
 	
+	public var repeats: Bool = false
+	
 	public init(duration: TimeInterval, timingFunction: CAMediaTimingFunction? = nil, ticker: DurationTicker? = nil) {
 		self.duration = duration
 		self.timingFunction = timingFunction
@@ -78,6 +80,10 @@ public class DurationAnimator: Animator {
 		}
 		delegate?.didComplete(animation: self, completed: rawProgress >= 1.0)
 		startedAt = nil
+		guard rawProgress >= 1.0, repeats else {
+			return
+		}
+		start()
 	}
 	
 }
