@@ -60,7 +60,11 @@ public class DurationAnimator: Animator {
 		}
 		defer {
 			if rawProgress >= 1.0 {
-				stop()
+				if repeats {
+					restart()
+				} else {
+					stop()
+				}
 			}
 		}
 		let progress = self.progress
@@ -83,6 +87,10 @@ public class DurationAnimator: Animator {
 		guard rawProgress >= 1.0, repeats else {
 			return
 		}
+	}
+	
+	func restart() {
+		stop()
 		start()
 	}
 	
