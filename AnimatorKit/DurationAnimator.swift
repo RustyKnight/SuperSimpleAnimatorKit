@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+public typealias DurationTicker = (DurationAnimator, Double, Bool) -> Void
+
 // MARK: DurationAnimation
 // An animation with a specific time frame to run in
 public protocol DurationAnimatorDelegate {
@@ -41,9 +43,12 @@ public class DurationAnimator: Animator {
 		return timingFunction.value(atTime: value)
 	}
 	
-	public init(duration: TimeInterval, timingFunction: CAMediaTimingFunction? = nil) {
+	internal var ticker: DurationTicker?
+	
+	public init(duration: TimeInterval, timingFunction: CAMediaTimingFunction? = nil, ticker: DurationTicker? = nil) {
 		self.duration = duration
 		self.timingFunction = timingFunction
+		self.ticker = ticker
 		super.init()
 	}
 	
@@ -57,6 +62,9 @@ public class DurationAnimator: Animator {
 			}
 		}
 		let progress = self.progress
+		if let ticker = ticker {
+			ticker(self, progress, false)
+		}
 		delegate?.didTick(animation: self, progress: progress)
 	}
 	
@@ -65,6 +73,9 @@ public class DurationAnimator: Animator {
 	}
 	
 	override func didStop() {
+		if let ticker = ticker {
+			ticker(self, progress, rawProgress >= 1.0)
+		}
 		delegate?.didComplete(animation: self, completed: rawProgress >= 1.0)
 		startedAt = nil
 	}

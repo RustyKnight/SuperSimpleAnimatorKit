@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+public typealias LinearTicker = (LinearAnimator) -> Void
+
 // MARK: LinearAnimation
 // The intention of this class is to provide a "untimed" animation cycle,
 // meaning that it will just keep on ticking, it has no duration.  Probably
@@ -22,10 +24,18 @@ public class LinearAnimator: Animator {
 	
 	public var delegate: LinearAnimatorDelegate?
 	
-	public override init() {}
+	internal var ticker: LinearTicker?
+	
+	public init(ticker: LinearTicker? = nil) {
+		self.ticker = ticker
+		super.init()
+	}
 	
 	// Extension point
 	override public func tick() {
+		if let ticker = ticker {
+			ticker(self)
+		}
 		delegate?.didTick(animation: self)
 	}
 	
