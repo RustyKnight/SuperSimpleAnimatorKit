@@ -31,20 +31,14 @@ internal func double(in range: ClosedRange<Double>, at point: Double, reversed: 
 // They can be used to calculate the current value between two points based on
 // a given progression point
 public extension Range where Bound == Double {
-	public func value(at point: Double, reverse: Bool = false) -> Double {
-		let lower = lowerBound
-		let upper = upperBound
-		let distant = upper - lower
-		return (distant * point) + lower
+	public func value(at point: Double, reversed: Bool = false) -> Double {
+		return double(in: self, at: point, reversed: reversed)
 	}
 }
 
 public extension ClosedRange where Bound == Double {
-	public func value(at point: Double, reverse: Bool = false) -> Double {
-		let lower = lowerBound
-		let upper = upperBound
-		let distant = upper - lower
-		return (distant * point) + lower
+	public func value(at point: Double, reversed: Bool = false) -> Double {
+		return double(in: self, at: point, reversed: reversed)
 	}
 }
 
