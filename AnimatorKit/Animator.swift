@@ -13,6 +13,10 @@ import UIKit
 public class Animator {
 	
 	internal var displayLink: CADisplayLink?
+  
+  // This can be changed BETWEEN runs, but won't effect running animators
+  public var runLoop: RunLoop = .current
+  public var runLoopMode: RunLoop.Mode = .common
 	
 	public init() {}
 	
@@ -26,7 +30,7 @@ public class Animator {
 		}
 		displayLink = CADisplayLink(target: self, selector: #selector(displayLinkTick(_:)))
 		displayLink?.preferredFramesPerSecond = 60
-		displayLink?.add(to: .current, forMode: RunLoop.Mode.default)
+		displayLink?.add(to: runLoop, forMode: runLoopMode)
 		displayLink?.isPaused = false
 		
 		didStart()

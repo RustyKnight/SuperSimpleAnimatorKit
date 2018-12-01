@@ -14,6 +14,7 @@
 		12C99909212FCAF300F1288B /* Range+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99905212FCAF300F1288B /* Range+Animation.swift */; };
 		12C9990A212FCAF300F1288B /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99906212FCAF300F1288B /* Animator.swift */; };
 		12C9990B212FCAF300F1288B /* DurationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C99907212FCAF300F1288B /* DurationAnimator.swift */; };
+		707E173221B203AD0057A8D2 /* CGFloat+Animation+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707E173121B203AD0057A8D2 /* CGFloat+Animation+Range.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		12C99905212FCAF300F1288B /* Range+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+Animation.swift"; sourceTree = "<group>"; };
 		12C99906212FCAF300F1288B /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		12C99907212FCAF300F1288B /* DurationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationAnimator.swift; sourceTree = "<group>"; };
+		707E173121B203AD0057A8D2 /* CGFloat+Animation+Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Animation+Range.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				12C99905212FCAF300F1288B /* Range+Animation.swift */,
 				12C998ED212FCAED00F1288B /* AnimatorKit.h */,
 				12C998EE212FCAED00F1288B /* Info.plist */,
+				707E173121B203AD0057A8D2 /* CGFloat+Animation+Range.swift */,
 			);
 			path = AnimatorKit;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				12C9990A212FCAF300F1288B /* Animator.swift in Sources */,
 				12C99909212FCAF300F1288B /* Range+Animation.swift in Sources */,
 				12C9990B212FCAF300F1288B /* DurationAnimator.swift in Sources */,
+				707E173221B203AD0057A8D2 /* CGFloat+Animation+Range.swift in Sources */,
 				12C99908212FCAF300F1288B /* LinearAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
