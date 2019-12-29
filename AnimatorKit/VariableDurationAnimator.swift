@@ -17,12 +17,30 @@ open class VariableDurationAnimator: DurationAnimator {
 	public func adjust(duration: TimeInterval, progress: Double) {
 		let wasRunning = isRunning
 		stop()
+		
+		print("""
+
+			\tset duration to \(duration)
+			\tset progress to \(progress)
+			""")
+		
 		// Set the desired duration
 		self.duration = duration
 		// Calculate the amount of time used
 		let used = duration * progress
+		
+		print("""
+
+			\tUsed duration \(used)
+			""")
 		// Adjust the the anchor time
 		startedAt = Date().addingTimeInterval(-used)
+
+		print("""
+
+			\tstartedAt \(startedAt)
+			\tprogress \(progress)
+			""")
 		guard wasRunning else { return }
 		start()
 	}
