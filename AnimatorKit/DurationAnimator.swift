@@ -75,6 +75,13 @@ open class DurationAnimator: Animator {
     self.completed = then
     super.init()
   }
+	
+	public func adjustedTiming(at progress: Double) -> Double {
+    guard let timingFunction = timingFunction else {
+      return progress
+    }
+    return timingFunction.value(atTime: progress)
+	}
   
   override public func tick() {
     guard let startedAt = startedAt else {
