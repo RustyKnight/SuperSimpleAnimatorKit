@@ -80,3 +80,4 @@ frameworks/carthage/Carthage/Checkouts
 Carthage/Build
 fastlane/builds
 *.cer
+/AnimatorKit.framework.zip
