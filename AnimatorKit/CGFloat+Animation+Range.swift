@@ -32,7 +32,7 @@ public extension Range where Bound == CGFloat {
 }
 
 public extension ClosedRange where Bound == CGFloat {
-  public func value(at point: Double, reversed: Bool = false) -> CGFloat {
+  func value(at point: Double, reversed: Bool = false) -> CGFloat {
     return cgfloat(in: self, at: point, reversed: reversed)
   }
 }

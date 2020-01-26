@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: Base animation
-public class Animator {
+open class Animator {
 	
 	internal var displayLink: CADisplayLink?
   
@@ -24,7 +24,7 @@ public class Animator {
 		return displayLink != nil
 	}
 	
-	public func start() {
+	open func start() {
 		guard displayLink == nil else {
 			return
 		}
@@ -39,7 +39,7 @@ public class Animator {
 	internal func didStart() {
 	}
 	
-	public func stop() {
+	open func stop() {
 		guard let displayLink = displayLink else {
 			return
 		}
@@ -58,7 +58,7 @@ public class Animator {
 	}
 	
 	// Extension point
-	public func tick() {
+	open func tick() {
 		fatalError("Animation.tick not yey implemented")
 	}
 	

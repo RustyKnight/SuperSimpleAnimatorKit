@@ -19,7 +19,7 @@ public protocol DurationAnimatorDelegate {
   func didComplete(animation: DurationAnimator, completed: Bool)
 }
 
-public class DurationAnimator: Animator {
+open class DurationAnimator: Animator {
   
   public enum Curve {
     case `default`
@@ -54,7 +54,7 @@ public class DurationAnimator: Animator {
     return runningTime / duration
   }
   
-  internal var progress: Double {
+  public var progress: Double {
     let value = rawProgress
     guard let timingFunction = timingFunction else {
       return value
@@ -67,26 +67,28 @@ public class DurationAnimator: Animator {
   
   public var repeats: Bool = false
   
-  public init(duration: TimeInterval, timingFunction: Curve? = nil, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
+	public init(duration: TimeInterval, timingFunction: Curve? = nil, repeats: Bool = false, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
     self.duration = duration
     self.timingFunction = timingFunction?.mediaTimingFunction
+		self.repeats = repeats
     self.ticker = ticker
     self.completed = then
     super.init()
   }
+	
+	public func adjustedTiming(at progress: Double) -> Double {
+    guard let timingFunction = timingFunction else {
+      return progress
+    }
+    return timingFunction.value(atTime: progress)
+	}
   
   override public func tick() {
     guard let startedAt = startedAt else {
       return
     }
     defer {
-      if rawProgress >= 1.0 {
-        if repeats {
-          restart()
-        } else {
-          stop()
-        }
-      }
+			afterTick()
     }
     let progress = self.progress
     if let ticker = ticker {
@@ -94,19 +96,31 @@ public class DurationAnimator: Animator {
     }
     delegate?.didTick(animation: self, progress: progress)
   }
+	
+	// This is called after the tick func has performed it's workflow.
+	// This should be used to make determinatins about what should be
+	// done at the given point in time, like stoping or restarting
+	// the animation
+	internal func afterTick() {
+		if rawProgress >= 1.0 {
+			if repeats {
+				restart()
+			} else {
+				stop()
+			}
+		}
+	}
   
   override func didStart() {
     startedAt = Date()
   }
   
   override func didStop() {
-    print("didStop")
     if let ticker = ticker {
       ticker(self, progress)
     }
     if let completed = completed {
       //, rawProgress >= 1.0
-      print("call completed")
       completed(rawProgress >= 1.0)
     }
     delegate?.didComplete(animation: self, completed: rawProgress >= 1.0)
