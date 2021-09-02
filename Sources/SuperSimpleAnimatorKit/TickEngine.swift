@@ -6,7 +6,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 public protocol TickEngineDelegate: AnyObject {
 	func didTick(engine: TickEngine)

@@ -6,9 +6,12 @@
 //  Copyright © 2018 KaiZen. All rights reserved.
 //
 
-#if os(iOS)
 import Foundation
+#if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 // MARK: Base animation
 open class Animator: TickEngineDelegate {
@@ -143,4 +146,3 @@ extension CAMediaTimingFunction {
 		return (3*a*x*x)+(2*b*x)+c
 	}
 }
-#endif

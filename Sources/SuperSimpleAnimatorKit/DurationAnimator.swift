@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 public typealias DurationTicker = (DurationAnimator, Double) -> Void
 public typealias AnimationCompleted = (Bool) -> Void
