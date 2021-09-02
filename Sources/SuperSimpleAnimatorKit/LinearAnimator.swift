@@ -26,9 +26,9 @@ public class LinearAnimator: Animator {
 	
 	internal var ticker: LinearTicker?
 	
-	public init(ticker: LinearTicker? = nil) {
+	public init(ticker: LinearTicker? = nil, tickEngine: TickEngine? = nil) {
 		self.ticker = ticker
-		super.init()
+		super.init(tickEngine: tickEngine)
 	}
 	
 	// Extension point

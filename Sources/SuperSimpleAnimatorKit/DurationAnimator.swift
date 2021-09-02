@@ -67,7 +67,7 @@ open class DurationAnimator: Animator {
   
   public var repeats: Bool = false
   
-	public init(duration: TimeInterval, timingFunction: Curve? = nil, repeats: Bool = false, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
+	public init(duration: TimeInterval, timingFunction: Curve? = nil, repeats: Bool = false, tickEngine: TickEngine? = nil, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
     self.duration = duration
     self.timingFunction = timingFunction?.mediaTimingFunction
 		self.repeats = repeats
@@ -84,7 +84,7 @@ open class DurationAnimator: Animator {
 	}
   
   override public func tick() {
-    guard let startedAt = startedAt else {
+		guard startedAt != nil else {
       return
     }
     defer {

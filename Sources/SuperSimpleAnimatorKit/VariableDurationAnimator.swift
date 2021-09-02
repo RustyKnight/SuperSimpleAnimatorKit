@@ -16,16 +16,16 @@ open class VariableDurationAnimator: DurationAnimator {
 				start()
 				return
 			}
-			displayLink?.isPaused = newValue
+			tickEngine.isPaused = newValue
 		}
 		
 		get {
-			displayLink?.isPaused ?? false
+			tickEngine.isPaused
 		}
 	}
 
-	public override init(duration: TimeInterval, timingFunction: Curve? = nil, repeats: Bool = false, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
-		super.init(duration: duration, timingFunction: timingFunction, repeats: repeats, ticker: ticker, then: then)
+	public override init(duration: TimeInterval, timingFunction: Curve? = nil, repeats: Bool = false, tickEngine: TickEngine? = nil, ticker: DurationTicker? = nil, then: AnimationCompleted? = nil) {
+		super.init(duration: duration, timingFunction: timingFunction, repeats: repeats, tickEngine: tickEngine, ticker: ticker, then: then)
 	}
 	
 	override func didStart() {
@@ -36,7 +36,7 @@ open class VariableDurationAnimator: DurationAnimator {
 	public func adjust(duration: TimeInterval, progress: Double) {
 		let wasRunning = isRunning
 		if wasRunning {
-			displayLink?.isPaused = true
+			tickEngine.isPaused = true
 		}
 		
 		// Set the desired duration
@@ -48,7 +48,7 @@ open class VariableDurationAnimator: DurationAnimator {
 		startedAt = Date().addingTimeInterval(-used)
 
 		guard wasRunning else { return }
-		displayLink?.isPaused = false
+		tickEngine.isPaused = false
 	}
 
 }

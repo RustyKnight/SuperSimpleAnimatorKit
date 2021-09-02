@@ -7,7 +7,11 @@
 //
 
 import Foundation
-
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+#elseif os(macOS)
+import Cocoa
+#endif
 
 internal func cgfloat(min: CGFloat, max: CGFloat, at point: Double, reversed: Bool = false) -> CGFloat {
   let from = reversed ? max : min

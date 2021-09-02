@@ -6,55 +6,46 @@
 //  Copyright © 2018 KaiZen. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 import UIKit
 
 // MARK: Base animation
-open class Animator {
+open class Animator: TickEngineDelegate {
 	
-	internal var displayLink: CADisplayLink?
-  
-  // This can be changed BETWEEN runs, but won't effect running animators
-  public var runLoop: RunLoop = .current
-  public var runLoopMode: RunLoop.Mode = .common
+	// Is it worth while making this optional?
+	internal var tickEngine: TickEngine
 	
-	public init() {}
-	
+	public init(tickEngine: TickEngine? = nil) {
+		if let tickEngine = tickEngine {
+			self.tickEngine = tickEngine
+			tickEngine.delegate = self
+		} else {
+			#if os(macOS)
+			self.tickEngine = TimerTickerEngine()
+			#else
+			self.tickEngine = DisplayLinkTickEngine()
+			#endif
+		}
+		self.tickEngine.delegate = self
+	}
+
 	public var isRunning: Bool {
-		return displayLink != nil
+		return tickEngine.isRunning
 	}
 	
 	open func start() {
-		guard displayLink == nil else {
-			return
-		}
-		displayLink = CADisplayLink(target: self, selector: #selector(displayLinkTick(_:)))
-		displayLink?.preferredFramesPerSecond = 60
-		displayLink?.add(to: runLoop, forMode: runLoopMode)
-		displayLink?.isPaused = false
-		
-		didStart()
+		tickEngine.start()
 	}
 	
 	internal func didStart() {
 	}
 	
 	open func stop() {
-		guard let displayLink = displayLink else {
-			return
-		}
-		displayLink.isPaused = true
-		displayLink.remove(from: .current, forMode: RunLoop.Mode.default)
-		self.displayLink = nil
-		
-		didStop()
+		tickEngine.stop()
 	}
 	
 	internal func didStop() {
-	}
-	
-	@objc func displayLinkTick(_ displayLink: CADisplayLink) {
-		tick()
 	}
 	
 	// Extension point
@@ -62,6 +53,18 @@ open class Animator {
 		fatalError("Animation.tick not yey implemented")
 	}
 	
+	public func didTick(engine: TickEngine) {
+		tick()
+	}
+	
+	public func didStart(engine: TickEngine) {
+		didStart()
+	}
+	
+	public func didStop(engine: TickEngine) {
+		didStop()
+	}
+
 }
 
 // MARK: Timing Function extensions
@@ -140,3 +143,4 @@ extension CAMediaTimingFunction {
 		return (3*a*x*x)+(2*b*x)+c
 	}
 }
+#endif

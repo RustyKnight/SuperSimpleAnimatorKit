@@ -5,6 +5,11 @@ import PackageDescription
 
 let package = Package(
     name: "SuperSimpleAnimatorKit",
+		platforms: [
+			.iOS(.v12),
+			.tvOS(.v9),
+			.macOS(.v10_15)
+		],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(

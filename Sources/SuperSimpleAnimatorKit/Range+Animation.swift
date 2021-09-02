@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import UIKit
-
 
 internal func double(min: Double, max: Double, at point: Double, reversed: Bool = false) -> Double {
 	let from = reversed ? max : min
